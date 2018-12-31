@@ -1,5 +1,7 @@
 from flask import render_template
 from feature_req import app
+from feature_req.forms import RequestForm
+
 requests1 = [
     {
         'title': 'Corey Schafereeee',

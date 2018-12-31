@@ -3,4 +3,5 @@ __pycache__
 **/featurerequests.db
 test_app.pyc
 **/__init__.pyc
+**/*.pyc
 feat_req/
