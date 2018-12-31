@@ -1,7 +1,18 @@
 {% extends "layout.html" %}
 {% block content%}
 	{% for request in requests %}
-		<h1>{{request.title}}</h1>
-		<h5>{{request.description}}</h5>
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#" >{{request.client}}</a>
+              <small class="text-secondary ">{{request.target_date}}</small>
+            </div>
+            <h2><span class="article-title" href="#" >{{request.title}}</span></h2>
+            <p> Product Area: <span>{{request.area}}</span></p>
+            <p> Priority: <span>{{request.client_priority}}</span></p>
+            
+            <p> Description: <span class="article-content">{{request.description}}</span></p>
+          </div>
+        </article>
 	{% endfor %}
 {% endblock content %}
