@@ -29,7 +29,7 @@ def requests():
 @app.route('/request/add')
 def add():
 	form = RequestForm()
-    if form.validate_on_submit():
-    	print(form.title.data)
-    return render_template('requestForm.html', title='add new', form=form)
+	if form.validate_on_submit():
+		print(form.title.data)
+	return render_template('requestForm.html', title='add new', form=form)
 	
