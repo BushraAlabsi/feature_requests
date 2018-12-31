@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block content%}
+	{% for request in requests %}
+		<h1>{{request.title}}</h1>
+		<h5>{{request.description}}</h5>
+	{% endfor %}
+{% endblock content %}
