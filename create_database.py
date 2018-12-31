@@ -1,7 +1,32 @@
 from feature_req import app,db
-
+from feature_req.models import Request, Client,ProductArea
 
 
 app.app_context().push()
 with app.app_context():
     db.create_all(None)
+    client=Client(name='Client A')
+    db.session.add(client)
+    db.session.commit()
+    client=Client(name='Client B')
+    db.session.add(client)
+    db.session.commit()
+    client=Client(name='Client C')
+    db.session.add(client)
+    db.session.commit()
+    area=ProductArea(name='Policies')
+    db.session.add(area)
+    db.session.commit()
+    area=ProductArea(name='Billings')
+    db.session.add(area)
+    db.session.commit()
+    area=ProductArea(name='Claims')
+    db.session.add(area)
+    db.session.commit()
+    area=ProductArea(name='Reports')
+    db.session.add(area)
+    db.session.commit()
+    allClients = Client.query.all()
+    allAreas = ProductArea.query.all()
+    print(allClients)
+    print(allAreas)
