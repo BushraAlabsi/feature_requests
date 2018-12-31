@@ -24,3 +24,12 @@ requests1 = [
 @app.route("/")
 def requests():
     return render_template("requests.html", title="home",requests= requests1)
+
+
+@app.route('/request/add')
+def add():
+	form = RequestForm()
+    if form.validate_on_submit():
+    	print(form.title.data)
+    return render_template('requestForm.html', title='add new', form=form)
+	
