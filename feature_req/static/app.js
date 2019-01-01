@@ -22,6 +22,10 @@ let viewModel = {
 			viewModel.requests.remove(req);
 			}
 		})
+	},
+	editReq: (req)=> {
+		console.log('edit',req)
+		window.location.href = "/req/"+req.id;
 	}
 }
 

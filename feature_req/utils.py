@@ -38,3 +38,25 @@ def deleteRequest(id):
             return "success"
         except Exception as inst:
             return inst 
+
+
+def editRequest(form,id):
+	req = Request.query.filter(Request.id == id).first()
+	req.title = form.title.data
+	req.description= form.description.data
+	req.product_area_id =form.productArea.data 
+	req.client_priority =form.clientPriority.data 
+	req.client_id=form.client.data 
+	req.target_date =form.targetDate.data
+	db.session.commit()
+	adjustPriority(form, req.id)
+
+
+def passValuesToForm(form,id):
+	req = Request.query.filter_by(id=id).first()
+	form.title.data = req.title
+	form.description.data = req.description
+	form.productArea.data = req.area.name
+	form.clientPriority.data = req.client_priority
+	form.client.data = req.client.name
+	form.targetDate.data = req.target_date
