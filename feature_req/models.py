@@ -1,6 +1,11 @@
 from datetime import datetime
 from feature_req import db
 
+def dump_datetime(value):
+    """Deserialize datetime object into string form for JSON processing."""
+    if value is None:
+        return None
+    return [value.strftime("%Y-%m-%d"), value.strftime("%H:%M:%S")]
 
 class Request(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -16,6 +21,21 @@ class Request(db.Model):
     def __repr__(self):
         return 'title: %s  priority %s  client_id %s' % (self.title, self.client_priority, self.client_id)
 
+
+    @property
+    def serialize(self):
+       """Return object data in easily serializeable format"""
+       return {
+           'id'         : self.id,
+           'target_date': dump_datetime(self.target_date),
+           'priority'   :self.client_priority,
+           'title'      :self.title,
+           'description':self.description,
+           'product_area':self.area.name,
+
+           # This is an example how to deal with Many2Many relations
+           'client'  : self.client.name
+       }
 
 class Client(db.Model):
     id = db.Column(db.Integer, primary_key=True)

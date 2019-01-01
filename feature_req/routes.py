@@ -1,4 +1,4 @@
-from flask import render_template, redirect,url_for
+from flask import render_template, redirect,url_for, jsonify
 from feature_req import app, db
 from feature_req.forms import RequestForm
 from feature_req.models import Request
@@ -8,11 +8,11 @@ from feature_req.models import Request
 @app.route("/requests")
 def requests():
     return render_template('requests.html')
-    
+
 
 @app.route("/getRequests", methods=['GET'])
 def getRequests():
-    return Request.query.all()
+    return jsonify([i.serialize for i in Request.query.all()])
 
 #create a new feature request
 @app.route('/addRequest', methods=['GET','POST'])
