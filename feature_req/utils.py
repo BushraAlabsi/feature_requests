@@ -29,3 +29,12 @@ def addRequest(form):
         db.session.add(request)
         db.session.commit()
         adjustPriority(form, request.id)
+
+def deleteRequest(id):
+	req = Request.query.filter_by(id=id).first()
+        db.session.delete(req)
+        try: 
+            db.session.commit()
+            return "success"
+        except Exception as inst:
+            return inst 

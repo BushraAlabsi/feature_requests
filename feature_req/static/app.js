@@ -10,6 +10,18 @@ let viewModel = {
 				viewModel.requests.valueHasMutated();
 			}
     	})	
+	},
+	deleteReq: (req)=> {
+		console.log('delete',req)
+		$.ajax({
+			url: `/req/${req.id}`,
+			type: 'DELETE',
+			success: (data)=>{
+				console.log(data)
+			// var array1 = viewModel.array();
+			viewModel.requests.remove(req);
+			}
+		})
 	}
 }
 

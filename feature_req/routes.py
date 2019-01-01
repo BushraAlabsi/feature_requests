@@ -1,8 +1,8 @@
-from flask import render_template, redirect,url_for, jsonify
+from flask import render_template, redirect,url_for, jsonify, request
 from feature_req import app, db
 from feature_req.forms import RequestForm
 from feature_req.models import Request
-from feature_req.utils import addRequest
+from feature_req.utils import addRequest,deleteRequest
 
 
 @app.route("/")
@@ -23,3 +23,9 @@ def add():
         addRequest(form)
         return redirect(url_for('requests'))
     return render_template('requestForm.html', title='add new', form=form)
+
+@app.route("/req/<id>", methods=['DELETE'])
+def req(id):
+    if request.method == 'DELETE':
+        return deleteRequest(id)
+        
