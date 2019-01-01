@@ -4,32 +4,17 @@ from feature_req.forms import RequestForm
 from feature_req.models import Request
 
 
-requests1 = [
-    {
-        'title': 'Corey Schafereeee',
-        'description': 'Blog Post 1',
-        'client': 'First post content',
-        'target_date': 'April 20, 2018',
-        'area': 'pa1',
-        'client_priority':'1'
-    },
-    {
-        'title': 'Jane Doe',
-        'description': 'Blog Post 2',
-        'client': 'Second post content',
-        'target_date': 'April 21, 2018',
-        'area': 'pa2',
-        'client_priority':'2'
-    }
-]
-
 @app.route("/")
 @app.route("/requests")
 def requests():
-    allRequests = Request.query.all()
-    return render_template("requests.html", title="home",requests= allRequests)
+    return render_template('requests.html')
+    
 
+@app.route("/getRequests", methods=['GET'])
+def getRequests():
+    return Request.query.all()
 
+#create a new feature request
 @app.route('/addRequest', methods=['GET','POST'])
 def add():
     form = RequestForm()
