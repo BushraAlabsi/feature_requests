@@ -30,3 +30,5 @@ with app.app_context():
     allAreas = ProductArea.query.all()
     print(allClients)
     print(allAreas)
+    # db.reflect()
+    # db.drop_all()

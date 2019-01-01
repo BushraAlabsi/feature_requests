@@ -2,6 +2,7 @@ from flask import render_template, redirect,url_for, jsonify
 from feature_req import app, db
 from feature_req.forms import RequestForm
 from feature_req.models import Request
+from feature_req.utils import adjustPriority
 
 
 @app.route("/")
@@ -28,5 +29,6 @@ def add():
             )
         db.session.add(request)
         db.session.commit()
+        adjustPriority(form, request.id)
         return redirect(url_for('requests'))
     return render_template('requestForm.html', title='add new', form=form)
