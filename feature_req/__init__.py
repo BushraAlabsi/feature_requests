@@ -1,11 +1,18 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from  feature_req.config import Config
+from feature_req.config import Config
 
-app = Flask(__name__)
+db = SQLAlchemy()
 
-app.config.from_object(Config)
+def create_app(config_class=Config):
 
-db = SQLAlchemy(app)
+	app = Flask(__name__)
+	app.config.from_object(Config)
+	db.init_app(app)
+	# print(app.config['SECRET_KEY'])
+	from .routes import featRequests
+	app.register_blueprint(featRequests)
 
-from feature_req import routes
+	return app
+
+
