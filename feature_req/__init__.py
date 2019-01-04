@@ -1,12 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import os
+from  feature_req.config import Config
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] =os.environ.get('SQLALCHEMY_DATABASE_URI')
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config.from_object(Config)
+
 db = SQLAlchemy(app)
 
 from feature_req import routes
