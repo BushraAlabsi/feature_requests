@@ -7,7 +7,7 @@ from flask_script import Manager
 from feature_req import create_app, db
 
 
-app = create_app('APP_SETTINGS')
+app = create_app()
 
 manager = Manager(app)
 

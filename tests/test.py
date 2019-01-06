@@ -3,7 +3,7 @@ from flask_testing import TestCase
 
 from feature_req import create_app, db
 from feature_req.models import Client, ProductArea, Request
-from test.config import TestConfig
+from tests.config import TestConfig
 
 class BaseTestCase(TestCase):
     """A base test case."""
