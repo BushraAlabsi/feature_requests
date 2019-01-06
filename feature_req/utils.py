@@ -31,6 +31,7 @@ def addRequest(form):
         adjustPriority(form, request.id)
 
 def deleteRequest(id):
+	print(id)
 	req = Request.query.filter_by(id=id).first()
         db.session.delete(req)
         try: 

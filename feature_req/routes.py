@@ -31,6 +31,8 @@ def add():
 @featRequests.route("/req/<id>", methods=['DELETE', 'GET','POST'])
 def req(id):
     if request.method == 'DELETE':
+        if deleteRequest(id) =='success':
+            return 'no_content',204
         return deleteRequest(id)
 
     if request.method == 'GET':

@@ -20,14 +20,15 @@ class BaseTestCase(TestCase):
         db.session.add(ProductArea(name='Billings'))
         db.session.add(ProductArea(name='Claims'))
     	db.session.add(ProductArea(name='Reports'))
-        db.session.add(Request(
+        self.request= Request(
             title='Feature request',
             description='Description',
             target_date= datetime.strptime('Jan 1 2019', '%b %d %Y'),
             client_priority=1,
             product_area_id=2,
             client_id=3
-        ))
+        )
+        db.session.add(self.request)
     	db.session.commit()
 
     def tearDown(self):
