@@ -1,7 +1,7 @@
 __pycache__
 .env
 **/request.db
-test_app.pyc
 **/__init__.pyc
 **/*.pyc
 feat_req/
+coverage/
