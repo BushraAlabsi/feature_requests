@@ -1,7 +1,6 @@
 from feature_req import db
 from feature_req.models import Request
-
-
+from datetime import datetime
 
 def adjustPriority(form,id):
 	priority= form.clientPriority.data
@@ -23,7 +22,7 @@ def addRequest(form):
             description=form.description.data,
             product_area_id =form.productArea.data,
             client_id= form.client.data,
-            target_date =form.targetDate.data,
+            target_date =datetime.strptime(form.targetDate.data.strftime('%Y-%m-%d'),'%Y-%m-%d'),
             client_priority= form.clientPriority.data
             )
         db.session.add(request)
@@ -48,7 +47,7 @@ def editRequest(form,id):
 	req.product_area_id =form.productArea.data 
 	req.client_priority =form.clientPriority.data 
 	req.client_id=form.client.data 
-	req.target_date =form.targetDate.data
+	req.target_date =datetime.strptime(form.targetDate.data.strftime('%Y-%m-%d'),'%Y-%m-%d')
 	db.session.commit()
 	adjustPriority(form, req.id)
 

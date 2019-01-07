@@ -29,7 +29,6 @@ class FeatureRequestsTestCase(BaseTestCase):
 			self.assertIn(content, str(response.data))
 
 	def test_feature_request_can_post(self):
-        # url = url_for('api.featurerequestresourcelist', _external=True)
 
 		data = {'title': 'new title', 'description': 'description1', 'client_id': 2, 'priority': 1,
                 'target_date': '2019-1-7', 'product_area_id': 4, 'form': ''}
