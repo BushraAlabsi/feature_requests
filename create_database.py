@@ -1,7 +1,7 @@
-from feature_req import app,db
+from feature_req import create_app,db
 from feature_req.models import Request, Client,ProductArea
 
-
+app = create_app()
 app.app_context().push()
 with app.app_context():
     db.create_all(None)

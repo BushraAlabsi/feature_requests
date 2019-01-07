@@ -23,8 +23,9 @@ def getRequests():
 def add():
     form = RequestForm()
     if form.validate_on_submit():
+        print(form.title)
         addRequest(form)
-        return redirect(url_for('featRequests.requests'), code=302)
+        return redirect (url_for('featRequests.requests'))
     return render_template('requestForm.html', title='add new', form=form)
 
 #delete or edit a request
