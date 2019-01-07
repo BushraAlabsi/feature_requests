@@ -1,6 +1,6 @@
 
 import unittest
-
+from flask import url_for, json
 from baseTest import BaseTestCase
 
 
@@ -32,6 +32,19 @@ class FeatureRequestsTestCase(BaseTestCase):
 		resp = self.client.delete("req/%d"%{self.request.id}.pop())
 		self.assertEqual(204, resp.status_code)
 
+	def test_feature_request_post_success(self):
+        # url = url_for('api.featurerequestresourcelist', _external=True)
+
+		data = {'title': 'title1', 'description': 'description1', 'client': 'Client C', 'priority': 3,
+                'target_date': '2019-1-7', 'product_area': 'product_area', 'form': ''}
+
+		response = self.client.post(
+			'/addRequest',
+            headers={'Accept': 'application/json', 'Content-Type': 'application/json'},
+            data=json.dumps(data),
+            follow_redirects=True
+            )
+		self.assertIn(b'description1', response.data)
 
 
 
