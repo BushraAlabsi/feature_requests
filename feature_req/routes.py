@@ -1,7 +1,7 @@
 from flask import render_template, redirect,url_for, jsonify, request, Blueprint
 from feature_req import db
 from feature_req.forms import RequestForm
-from feature_req.models import Request,Client
+from feature_req.models import Request,Client, ProductArea
 from feature_req.utils import addRequest,deleteRequest, editRequest, passValuesToForm
 
 featRequests = Blueprint('featRequests', __name__, static_folder= './feature_req/static')
@@ -21,13 +21,17 @@ def getRequests():
 #create a new feature request
 @featRequests.route('/addRequest', methods=['GET','POST'])
 def add():
-    clients = [i.serialize for i in Client.query.all()]
+    clients = [(c.id, c.name) for c in Client.query.all()]
+    productAreas = [(pa.id, pa.name) for pa in ProductArea.query.all()]
+
+    print(clients)
     form = RequestForm()
     if form.validate_on_submit():
         print(form.title)
         addRequest(form)
         return redirect (url_for('featRequests.requests'))
     form.client.choices = clients
+    form.productArea.choices = productAreas
     return render_template('requestForm.html', title='add new', form=form)
 
 #delete or edit a request
