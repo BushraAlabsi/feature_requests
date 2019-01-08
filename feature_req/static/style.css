@@ -16,6 +16,9 @@ ul {
 button {
   margin: 15px
 }
+.client {
+  color:#3A448A;
+}
 
 .bg-steel {
   background-color: #D4AF37;
