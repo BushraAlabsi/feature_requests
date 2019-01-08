@@ -24,8 +24,8 @@ let viewModel = {
 		})
 	},
 	editReq: (req)=> {
-		console.log('edit',req)
-		window.location.href = "/request/edit"+req.id;
+		console.log('edittttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt',req)
+		window.location.href = "/request/edit/"+req.id;
 	}
 }
 

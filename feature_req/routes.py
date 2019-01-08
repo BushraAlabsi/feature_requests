@@ -21,17 +21,17 @@ def getRequests():
 #create a new feature request
 @featRequests.route('/request/add', methods=['GET','POST'])
 def add():
-    clients = [(c.id, c.name) for c in Client.query.all()]
-    productAreas = [(pa.id, pa.name) for pa in ProductArea.query.all()]
+    # clients = [(c.id,c.name) for c in Client.query.all()]
+    # print(clients)
+    # productAreas = [(pa.id, pa.name) for pa in ProductArea.query.all()]
 
-    print(clients)
+    # print(clients)
     form = RequestForm()
     if form.validate_on_submit():
-        print(form.title)
         addRequest(form)
         return redirect (url_for('featRequests.requests'))
-    form.client.choices = clients
-    form.productArea.choices = productAreas
+    # form.client.choices = clients
+    # form.productArea.choices = productAreas
     return render_template('requestForm.html', title='add new', form=form)
 
 #delete or edit a request
