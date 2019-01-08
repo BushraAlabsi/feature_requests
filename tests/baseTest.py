@@ -21,7 +21,7 @@ class BaseTestCase(TestCase):
         db.session.add(ProductArea(name='Claims'))
     	db.session.add(ProductArea(name='Reports'))
         self.request= Request(
-            title='Feature request',
+            title='Feature Request Test',
             description='Description',
             target_date= datetime.strptime('Jan 1 2019', '%b %d %Y'),
             client_priority=1,

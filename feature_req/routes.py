@@ -14,12 +14,12 @@ def requests():
     return render_template('requests.html')
 
 
-@featRequests.route("/getRequests", methods=['GET'])
+@featRequests.route("/request/getAll", methods=['GET'])
 def getRequests():
     return jsonify([i.serialize for i in Request.query.all()])
 
 #create a new feature request
-@featRequests.route('/addRequest', methods=['GET','POST'])
+@featRequests.route('/request/add', methods=['GET','POST'])
 def add():
     clients = [(c.id, c.name) for c in Client.query.all()]
     productAreas = [(pa.id, pa.name) for pa in ProductArea.query.all()]
@@ -35,13 +35,16 @@ def add():
     return render_template('requestForm.html', title='add new', form=form)
 
 #delete or edit a request
-@featRequests.route("/req/<id>", methods=['DELETE', 'GET','POST'])
-def req(id):
+@featRequests.route("/request/delete/<id>", methods=['DELETE'])
+def delete(id):
     if request.method == 'DELETE':
         if deleteRequest(id) =='success':
             return 'no_content',204
         return deleteRequest(id)
 
+
+@featRequests.route("/request/edit/<id>", methods=['GET','POST'])
+def edit(id):
     if request.method == 'GET':
         form = RequestForm()
         passValuesToForm(form,id)

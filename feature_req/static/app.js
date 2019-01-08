@@ -2,7 +2,7 @@ let viewModel = {
 	requests: ko.observableArray(),
 	getRequests: ()=> {
 	 $.ajax({
-			url: "/getRequests",
+			url: "request/getAll",
 			type: 'GET',
 			success: (data)=>{
 				console.log(data);
@@ -14,7 +14,7 @@ let viewModel = {
 	deleteReq: (req)=> {
 		console.log('delete',req)
 		$.ajax({
-			url: `/req/${req.id}`,
+			url: `/request/delete/${req.id}`,
 			type: 'DELETE',
 			success: (data)=>{
 				console.log(data)
@@ -25,7 +25,7 @@ let viewModel = {
 	},
 	editReq: (req)=> {
 		console.log('edit',req)
-		window.location.href = "/req/"+req.id;
+		window.location.href = "/request/edit"+req.id;
 	}
 }
 
