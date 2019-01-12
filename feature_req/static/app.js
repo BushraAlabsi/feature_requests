@@ -1,5 +1,6 @@
 let viewModel = {
 	requests: ko.observableArray(),
+	currentClient:ko.observable(undefined),
 	getRequests: ()=> {
 	 $.ajax({
 			url: "request/getAll",
@@ -24,10 +25,33 @@ let viewModel = {
 		})
 	},
 	editReq: (req)=> {
-		console.log('edittttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt',req)
 		window.location.href = "/request/edit/"+req.id;
+	},
+	getClientRequests: (client_id)=> {
+		$.ajax({
+			url: `/request/get/${client_id}`,
+			type: 'GET',
+			success: (data)=>{
+				console.log(data);
+				viewModel.requests([]);
+				ko.utils.arrayPushAll(viewModel.requests, data);
+				viewModel.currentClient(data[0].client);
+				viewModel.requests.valueHasMutated();
+			}
+    	})
+	},
+	changeToClientRoute: (req)=>{
+		window.location.href = "/request/clientRequests/"+req.client_id;
 	}
 }
 
 ko.applyBindings(viewModel);
-viewModel.getRequests()
+console.log(window.location)
+let path = window.location.pathname;
+if(path== "/"){
+	viewModel.getRequests()
+}
+if(path.includes("/request/clientRequests")){
+	id = path.slice(path.lastIndexOf("/")+1,path.length)
+	viewModel.getClientRequests(id)	
+}

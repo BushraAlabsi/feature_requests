@@ -10,31 +10,25 @@ featRequests = Blueprint('featRequests', __name__, static_folder= './feature_req
 
 @featRequests.route("/")
 @featRequests.route("/requests")
-def requests():
+@featRequests.route("/request/clientRequests/<clientId>")
+def requests(clientId=None):
     return render_template('requests.html')
 
 
 @featRequests.route("/request/getAll", methods=['GET'])
 def getRequests():
-    return jsonify([i.serialize for i in Request.query.all()])
+    return jsonify([r.serialize for r in Request.query.all()])
 
 #create a new feature request
 @featRequests.route('/request/add', methods=['GET','POST'])
 def add():
-    # clients = [(c.id,c.name) for c in Client.query.all()]
-    # print(clients)
-    # productAreas = [(pa.id, pa.name) for pa in ProductArea.query.all()]
-
-    # print(clients)
     form = RequestForm()
     if form.validate_on_submit():
         addRequest(form)
         return redirect (url_for('featRequests.requests'))
-    # form.client.choices = clients
-    # form.productArea.choices = productAreas
     return render_template('requestForm.html', title='add new', form=form)
 
-#delete or edit a request
+#delete a request
 @featRequests.route("/request/delete/<id>", methods=['DELETE'])
 def delete(id):
     if request.method == 'DELETE':
@@ -42,7 +36,7 @@ def delete(id):
             return 'no_content',204
         return deleteRequest(id)
 
-
+# edit a request
 @featRequests.route("/request/edit/<id>", methods=['GET','POST'])
 def edit(id):
     if request.method == 'GET':
@@ -54,5 +48,10 @@ def edit(id):
         form = RequestForm()
         if form.validate_on_submit():
             editRequest(form,id)
-        return redirect(url_for('featRequests.requests'))   
+        return redirect(url_for('featRequests.requests')) 
+
+# get client requests
+@featRequests.route("/request/get/<clientId>", methods = ['GET'])
+def getClientRequest(clientId):
+      return jsonify([c.serialize for c in Client.query.filter_by(id = clientId).first().requests]);
         

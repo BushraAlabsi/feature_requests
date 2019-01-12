@@ -1,24 +1,27 @@
 {% extends "layout.html" %}
 {% block content%}
-	<ul data-bind="foreach: requests" >
-        <li >
-        <article class="media content-section">
-          <div class="media-body">
-            <div class="article-metadata">
-              <span class="mr-2 client" href="#" data-bind=" text: client"></span>
-              <small class="text-secondary " data-bind=" text: target_date"></small>
+  <h2 data-bind= "text: currentClient" class= media></h2>
+  	<ul data-bind="foreach: requests" >
+          <li >
+          <article class="media content-section">
+            <div class="media-body">
+              <div class="article-metadata">
+                <span data-bind="ifnot: $parent.currentClient">
+                <span class="mr-2 client" href="#" data-bind="text: client, click: $parent.changeToClientRoute"></span>
+                </span>
+                <small class="text-secondary " data-bind=" text: target_date"></small>
+              </div>
+              <h2><span class="article-title" href="#" data-bind=" text: title"></span></h2>
+              <p> Product Area: <span data-bind=" text: product_area"></span></p>
+              <p> Priority: <span data-bind=" text: priority"> </span></p>
+              
+              <p> Description: <span class="article-content" data-bind=" text: description"></span></p>
             </div>
-            <h2><span class="article-title" href="#" data-bind=" text: title"></span></h2>
-            <p> Product Area: <span data-bind=" text: product_area"></span></p>
-            <p> Priority: <span data-bind=" text: priority"> </span></p>
-            
-            <p> Description: <span class="article-content" data-bind=" text: description"></span></p>
-          </div>
-          <div class="buttons">
-              <button class="btn btn-info" data-bind= "click: $parent.editReq">Edit</button>
-              <button class="btn btn-dark" data-bind= "click: $parent.deleteReq">Delete</button>
-          </div>
-        </article>
-      </li>
-      </ul>
+            <div class="buttons">
+                <button class="btn btn-info" data-bind= "click: $parent.editReq">Edit</button>
+                <button class="btn btn-dark" data-bind= "click: $parent.deleteReq">Delete</button>
+            </div>
+          </article>
+        </li>
+        </ul>
 {% endblock content %}
