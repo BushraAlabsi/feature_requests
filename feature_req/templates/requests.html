@@ -1,21 +1,21 @@
 {% extends "layout.html" %}
 {% block content%}
-  <h2 data-bind= "text: currentClient" class= media></h2>
+  <h2 data-bind= "text: currentClient" class= "ml-5"></h2>
   	<ul data-bind="foreach: requests" >
           <li >
           <article class="media content-section">
             <div class="media-body">
               <div class="article-metadata">
                 <span data-bind="ifnot: $parent.currentClient">
-                <span class="mr-2 client" href="#" data-bind="text: client, click: $parent.changeToClientRoute"></span>
+                <a class="mr-2 client" href="#" data-bind="text: client, click: $parent.changeToClientRoute"></a>
                 </span>
-                <small class="text-secondary " data-bind=" text: target_date"></small>
+                <small class=" text-secondary">Target Date:</small><small data-bind=" text: target_date"></small>
               </div>
               <h2><span class="article-title" href="#" data-bind=" text: title"></span></h2>
-              <p> Product Area: <span data-bind=" text: product_area"></span></p>
-              <p> Priority: <span data-bind=" text: priority"> </span></p>
+              <p class="text-secondary"> Product Area: <span class="text-dark" data-bind=" text: product_area"></span></p>
+              <p class="text-secondary"> Priority: <span class="text-dark" data-bind=" text: priority"> </span></p>
               
-              <p> Description: <span class="article-content" data-bind=" text: description"></span></p>
+              <p class="text-secondary" > Description: <span class=" text-darkarticle-content" data-bind=" text: description"></span></p>
             </div>
             <div class="buttons">
                 <button class="btn btn-info" data-bind= "click: $parent.editReq">Edit</button>

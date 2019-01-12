@@ -18,8 +18,6 @@ let viewModel = {
 			url: `/request/delete/${req.id}`,
 			type: 'DELETE',
 			success: (data)=>{
-				console.log(data)
-			// var array1 = viewModel.array();
 			viewModel.requests.remove(req);
 			}
 		})
@@ -32,7 +30,6 @@ let viewModel = {
 			url: `/request/get/${client_id}`,
 			type: 'GET',
 			success: (data)=>{
-				console.log(data);
 				viewModel.requests([]);
 				ko.utils.arrayPushAll(viewModel.requests, data);
 				viewModel.currentClient(data[0].client);
@@ -46,9 +43,8 @@ let viewModel = {
 }
 
 ko.applyBindings(viewModel);
-console.log(window.location)
 let path = window.location.pathname;
-if(path== "/"){
+if(path == "/" || path == "/requests"){
 	viewModel.getRequests()
 }
 if(path.includes("/request/clientRequests")){
