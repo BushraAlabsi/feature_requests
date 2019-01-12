@@ -4,13 +4,17 @@ from wtforms.fields.html5 import DateField
 from wtforms.validators import DataRequired, Length, EqualTo
 from wtforms_sqlalchemy.fields import QuerySelectField
 from feature_req.models import Client, ProductArea
-
+from datetime import date
 
 def get_clients():
 	return Client.query
 
 def get_areas():
 	return ProductArea.query
+
+# def future_date(form, field):
+#     if field.data < date.today():
+#         raise error('date must be in the future')
 
 class RequestForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
