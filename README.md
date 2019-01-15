@@ -25,7 +25,7 @@ http://ec2-3-86-248-156.compute-1.amazonaws.com/
 ## The API
 
 
-##Tests
+## Tests
 To run the test, from within the root directory run:
 `` python manage.py test ``
 
