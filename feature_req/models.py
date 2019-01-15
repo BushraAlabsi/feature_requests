@@ -9,8 +9,8 @@ def dump_datetime(value):
 
 class Request(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(20), nullable=False)
-    description = db.Column(db.String(120), default='')
+    title = db.Column(db.String(50), nullable=False)
+    description = db.Column(db.String(2000), default='')
     product_area_id = db.Column(db.Integer, db.ForeignKey('product_area.id'), nullable=False)
     target_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     client_priority = db.Column(db.Integer, nullable=False)
@@ -39,7 +39,7 @@ class Request(db.Model):
 
 class Client(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
+    name = db.Column(db.String(50), nullable=False)
     #define a one-to-many relation between client and request tables
     requests = db.relationship('Request', backref='client', lazy=True)
 
@@ -59,7 +59,7 @@ class Client(db.Model):
 
 class ProductArea(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
+    name = db.Column(db.String(50), nullable=False)
     #define a one-to-many relation between product_area and request tables
     requests = db.relationship('Request', backref='area', lazy=True)
 
