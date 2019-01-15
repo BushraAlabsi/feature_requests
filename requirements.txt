@@ -8,6 +8,7 @@ Flask-WTF==0.14.2
 itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.0
+PyMySQL==0.9.3
 SQLAlchemy==1.2.15
 Werkzeug==0.14.1
 WTForms==2.2.1
