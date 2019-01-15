@@ -33,7 +33,7 @@ class Request(db.Model):
            'description':self.description,
            'product_area':self.area.name,
            'client_id'  :self.client_id,
-           # This is an example how to deal with Many2Many relations
+           # This is an example how to deal with One2Many relations
            'client'  : self.client.name
        }
 
@@ -48,6 +48,7 @@ class Client(db.Model):
         return '%s' % self.name
     @property
     def serialize(self):
+       """Return object data in easily serializeable format"""
         return {
            'id'         : self.id,
            'name'       :self.name,

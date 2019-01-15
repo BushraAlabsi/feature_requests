@@ -6,12 +6,15 @@ from wtforms_sqlalchemy.fields import QuerySelectField, ValidationError
 from feature_req.models import Client, ProductArea
 from datetime import date
 
+#get clients from DB for dynamic select field choices
 def get_clients():
 	return Client.query
 
+#get product area from DB for dynamic select field choices
 def get_areas():
 	return ProductArea.query
 
+#customized validator
 def future_date_check(form, field):
     if field.data < date.today():
         raise ValidationError('date must be in the future')

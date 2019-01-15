@@ -1,6 +1,7 @@
 let viewModel = {
 	requests: ko.observableArray(),
 	currentClient:ko.observable(undefined),
+	//get all the requests and render them in the html
 	getRequests: ()=> {
 	 $.ajax({
 			url: "request/getAll",
@@ -12,6 +13,7 @@ let viewModel = {
 			}
     	})	
 	},
+	//delete a request
 	deleteReq: (req)=> {
 		console.log('delete',req)
 		$.ajax({
@@ -22,6 +24,7 @@ let viewModel = {
 			}
 		})
 	},
+	//edit a request
 	editReq: (req)=> {
 		window.location.href = "/request/edit/"+req.id;
 	},

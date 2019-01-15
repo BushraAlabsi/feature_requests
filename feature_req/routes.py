@@ -7,14 +7,14 @@ from feature_req.utils import addRequest,deleteRequest, editRequest, passValuesT
 featRequests = Blueprint('featRequests', __name__, static_folder= './feature_req/static')
 
 
-
+#load main page
 @featRequests.route("/")
 @featRequests.route("/requests")
 @featRequests.route("/request/clientRequests/<clientId>")
 def requests(clientId=None):
     return render_template('requests.html')
 
-
+#get all requests
 @featRequests.route("/request/getAll", methods=['GET'])
 def getRequests():
     return jsonify([r.serialize for r in Request.query.all()])

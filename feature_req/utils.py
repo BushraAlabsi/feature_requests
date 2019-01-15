@@ -52,7 +52,7 @@ def editRequest(form,id):
 	db.session.commit()
 	adjustPriority(form, req.id)
 
-
+#pass the values for edit to the form
 def passValuesToForm(form,id):
 	req = Request.query.filter_by(id=id).first()
 	form.title.data = req.title
