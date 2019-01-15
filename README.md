@@ -22,4 +22,12 @@ http://ec2-3-86-248-156.compute-1.amazonaws.com/
 
 
 
-# The API
+## The API
+
+
+##Tests
+To run the test, from within the root directory run:
+`` python manage.py test ``
+
+And to run coverage tests run:
+`` python manage.py cov ``
