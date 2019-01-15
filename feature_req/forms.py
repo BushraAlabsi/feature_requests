@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, IntegerField, SubmitField
 from wtforms.fields.html5 import DateField
 from wtforms.validators import DataRequired, Length, EqualTo
-from wtforms_sqlalchemy.fields import QuerySelectField
+from wtforms_sqlalchemy.fields import QuerySelectField, ValidationError
 from feature_req.models import Client, ProductArea
 from datetime import date
 
@@ -12,9 +12,9 @@ def get_clients():
 def get_areas():
 	return ProductArea.query
 
-# def future_date(form, field):
-#     if field.data < date.today():
-#         raise error('date must be in the future')
+def future_date_check(form, field):
+    if field.data < date.today():
+        raise ValidationError('date must be in the future')
 
 class RequestForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
@@ -27,5 +27,5 @@ class RequestForm(FlaskForm):
                             get_label=lambda pa: pa.name)
 
     description = StringField('Description')
-    targetDate = DateField('DatePicker',format='%Y-%m-%d',validators=[DataRequired()])
+    targetDate = DateField('DatePicker',format='%Y-%m-%d',validators=[DataRequired(), future_date_check])
     submit = SubmitField('Submit')
