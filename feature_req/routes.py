@@ -34,7 +34,7 @@ def delete(id):
     if request.method == 'DELETE':
         if deleteRequest(id) =='success':
             return 'no_content',204
-        return deleteRequest(id)
+        return 'bad request',404
 
 # edit a request
 @featRequests.route("/request/edit/<id>", methods=['GET','POST'])
