@@ -25,7 +25,7 @@ class FeatureRequestsTestCase(BaseTestCase):
 	def test_feature_request_get_response(self):
 		response = self.client.get("/request/getAll")
 		#the example request in the database
-		contents = ['Feature request', 'Description', 'Billings', '1', 'Client C']
+		contents = ['Feature Request Test', 'Description', 'Billings', '1', 'Client C']
 		for content in contents:
 			self.assertIn(content, str(response.data))
 

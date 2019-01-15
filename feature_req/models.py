@@ -49,7 +49,7 @@ class Client(db.Model):
     @property
     def serialize(self):
        """Return object data in easily serializeable format"""
-        return {
+       return {
            'id'         : self.id,
            'name'       :self.name,
            'requests'   :self.requests
