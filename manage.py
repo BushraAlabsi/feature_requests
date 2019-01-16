@@ -18,7 +18,8 @@ def test():
     tests = unittest.TestLoader().discover('tests')
     unittest.TextTestRunner(verbosity=2).run(tests)
 
-
+## Give a summary on how much of the project did the tests cover
+## you don't need to worry about this function unless you want to build on this project 
 @manager.command
 def cov():
     """Runs the unit tests with coverage."""

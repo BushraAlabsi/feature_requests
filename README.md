@@ -13,14 +13,15 @@ http://ec2-3-86-248-156.compute-1.amazonaws.com/
 6. **Boostrap V4 and Jquery** 
 7. **KnockoutJS** - Javascript library used for dynamic UI.
 
-
-## Infrastructure
-1. **AWS EC2:** The app is running on an AWS EC2 instance.
-2. **Ubuntu 18.04 LTS:** The OS used is the Ubuntu 16.04 provided by AWS.
-3. **Database**: The MySQL production instance is running on the same machine.
-4. **Static Files**: No service like AWS S3 or CDN is being used.
-
 ## Setting Up Environment
+
+I. Install PIP
+
+```
+sudo apt update
+sudo apt install python-pip
+```
+II. Setting environment variables
 
 1. SECRET KEY: the secret key is used by the system to protect from csrf attacks, and it is required to the forms, any string could work as a secret key but generating a random hex would be more secure
 
@@ -47,22 +48,23 @@ add these two line and then save the file:
 ``` CREATE DATABASE request ```
 
 ## Running Locally
-make sure to go through setting up enviroment before continuing on tis section
+make sure to go through [Setting Up Enviroment](#setting-up-environments) before continuing on this section
+
 
 I. clone this repository, or download it 
-```git clone ```
+```git clone https://github.com/BushraAlabsi/feature_requests.git ```
 
 II. create a virtual environment (this step is optional you can download the dependencies globally on your machine)
 	
-	1.install virtualenv:
+   1.install virtualenv:
 	
 	```pip install virtualenv ```
 	
-	2. create a virtual environment by navigating to the path you want to add it to:
+   2. create a virtual environment by navigating to the path you want to add it to:
 	
 	``` virtualenv name ```
 	
-	3.activate the virtual machine that you have created:
+   3.activate the virtual machine that you have created:
 	
 	``` source name/bin/activate```
 
@@ -78,10 +80,14 @@ V. run the app:
 now the application is running on localhost:5000
 
 ## Running Tests
-make sure to go through setting up enviroment before continuing on tis section
+make sure to go through [Setting Up Enviroment](#setting-up-environments) before continuing on this section
 
 To run the test, from within the root directory:
 
 `` python manage.py test ``
 
-
+## Infrastructure
+1. **AWS EC2:** The app is running on an AWS EC2 instance.
+2. **Ubuntu 18.04 LTS:** The OS used is the Ubuntu 16.04 provided by AWS.
+3. **Database**: The MySQL production instance is running on the same machine.
+4. **Static Files**: No service like AWS S3 or CDN is being used.
