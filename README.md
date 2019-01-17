@@ -40,6 +40,7 @@ after access the  interactive console:
 2. SQLALCHEMY_DATABASE_URI: This is the uri for the database that you're using, sqlalchemy 	supports many database systems, you can use the database system that you are comfortable with, here are the two options; sqlite3 and mysql that were used in this project:
 
 sqlite:///requests.db  (for developement)
+
 mysql+pymysql://yourusername:yourpassword@yourserver/requests (for deployment)  
 
 to set these variables in the system on Ubuntu:
