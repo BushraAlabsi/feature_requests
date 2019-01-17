@@ -13,7 +13,7 @@ http://ec2-3-86-248-156.compute-1.amazonaws.com/
 6. **Boostrap V4 and Jquery** 
 7. **KnockoutJS** - Javascript library used for dynamic UI.
 
-## Setting Up Environment
+## Setting Up Environment (#setting-up-environments)
 
 I. Install PIP
 
@@ -34,48 +34,71 @@ mysql+pymysql://yourusername:yourpassword@yourserver/request (for deployment)
 to set these variable in the system on Ubuntu:
 
 open your bash_profile file:
-```nano ~/.bash_profile```
+```
+nano ~/.bash_profile
+```
 
 add these two line and then save the file:
 
-``` export SECRET_KEY='YOUR_SECRET_KEY' `
-``  export SQLALCHEMY_DATABASE_URI='YOUR_DATABASE_URI' ```
+```
+ export SECRET_KEY='YOUR_SECRET_KEY' 
+ export SQLALCHEMY_DATABASE_URI='YOUR_DATABASE_URI'
+  ```
 
 
 **if you chose mysql, you need to create the database first, ony way of doing that is from your terminal:**
-``` sudo mysql -u username -p ``` Note: sudo is optional unless you are using mysql version 5.7 or higher, and using the root user.
+``` 
+sudo mysql -u username -p 
+```
+ Note: sudo is optional unless you are using mysql version 5.7 or higher, and using the root user.
 
-``` CREATE DATABASE request ```
+``` 
+CREATE DATABASE request 
+```
 
 ## Running Locally
 make sure to go through [Setting Up Enviroment](#setting-up-environments) before continuing on this section
 
 
 I. clone this repository, or download it 
-```git clone https://github.com/BushraAlabsi/feature_requests.git ```
+```
+git clone https://github.com/BushraAlabsi/feature_requests.git
+ ```
 
 II. create a virtual environment (this step is optional you can download the dependencies globally on your machine)
 	
    1.install virtualenv:
 	
-	```pip install virtualenv ```
+```
+	pip install virtualenv
+```
 	
    2. create a virtual environment by navigating to the path you want to add it to:
 	
-	``` virtualenv name ```
+``` 
+	virtualenv name 
+```
 	
    3.activate the virtual machine that you have created:
 	
-	``` source name/bin/activate```
+``` 
+	source name/bin/activate
+```
 
 III. navigate into this repository in your terminal and install dependecies:
-``` pip install -r requirements.txt```
+``` 
+pip install -r requirements.txt
+```
 
 IV. create tables and insert clients and product area:
-```python create_database.py ```
+```
+python create_database.py
+ ```
 
 V. run the app:
-```python run.py ```
+```
+python run.py
+ ```
 
 now the application is running on localhost:5000
 
@@ -84,7 +107,9 @@ make sure to go through [Setting Up Enviroment](#setting-up-environments) before
 
 To run the test, from within the root directory:
 
-`` python manage.py test ``
+```
+python manage.py test 
+```
 
 ## Infrastructure
 1. **AWS EC2:** The app is running on an AWS EC2 instance.
