@@ -1,5 +1,7 @@
 # Feature Requests
 
+> This application is made for employees to add the feature requests that they recieve from clients.
+
 #### The app is live at:
 
 http://ec2-3-86-248-156.compute-1.amazonaws.com/ 
@@ -13,29 +15,38 @@ http://ec2-3-86-248-156.compute-1.amazonaws.com/
 6. **Boostrap V4 and Jquery** 
 7. **KnockoutJS** - Javascript library used for dynamic UI.
 
-## Setting Up Environment (#setting-up-environments)
+## Setting Up Environment
 
-I. Install PIP
+I. Install PIP:
+
+To install pip on ubuntu:
 
 ```
 sudo apt update
 sudo apt install python-pip
 ```
-II. Setting environment variables
+II. Setting Environment Variables
 
-1. SECRET KEY: the secret key is used by the system to protect from csrf attacks, and it is required to the forms, any string could work as a secret key but generating a random hex would be more secure
-
+1. SECRET KEY: the secret key is required to for client-side session security like in CSRF protection, the encrypting of cookies. Any string could work as a secret key, you can generate a random key by running this on your terminal:
+``` 
+python 
+```
+after access the  interactive console:
+```
+>>> import os
+>>> os.urandom(16)
+```
 
 2. SQLALCHEMY_DATABASE_URI: This is the uri for the database that you're using, sqlalchemy 	supports many database systems, you can use the database system that you are comfortable with, here are the two options; sqlite3 and mysql that were used in this project:
 
-sqlite:///request.db  (for developement)
-mysql+pymysql://yourusername:yourpassword@yourserver/request (for deployment)  
+sqlite:///requests.db  (for developement)
+mysql+pymysql://yourusername:yourpassword@yourserver/requests (for deployment)  
 
-to set these variable in the system on Ubuntu:
+to set these variables in the system on Ubuntu:
 
 open your bash_profile file:
 ```
-nano ~/.bash_profile
+sudo nano ~/.profile
 ```
 
 add these two line and then save the file:
@@ -47,17 +58,18 @@ add these two line and then save the file:
 
 
 **if you chose mysql, you need to create the database first, ony way of doing that is from your terminal:**
+Access monitor: (will prompt for password)
 ``` 
 sudo mysql -u username -p 
 ```
  Note: sudo is optional unless you are using mysql version 5.7 or higher, and using the root user.
 
 ``` 
-CREATE DATABASE request 
+mysql> CREATE DATABASE requests 
 ```
 
 ## Running Locally
-make sure to go through [Setting Up Enviroment](#setting-up-environments) before continuing on this section
+make sure to go through [Setting Up Enviroment](#setting-up-environment) before continuing on this section
 
 
 I. clone this repository, or download it 
@@ -100,10 +112,10 @@ V. run the app:
 python run.py
  ```
 
-now the application is running on localhost:5000
+now the application is running on http://localhost:5000
 
 ## Running Tests
-make sure to go through [Setting Up Enviroment](#setting-up-environments) before continuing on this section
+Make sure to go through [Setting Up Enviroment](#setting-up-environment) before continuing on this section
 
 To run the test, from within the root directory:
 
