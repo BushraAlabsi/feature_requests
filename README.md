@@ -1,6 +1,6 @@
 # Feature Requests
 
-> This application is made for employees to add the feature requests that they recieve from clients.
+> This application is made for employees to regarding the feature requests that they recieve from clients, they can add, edit, delete and view the request of each client.
 
 #### The app is live at:
 
@@ -66,7 +66,7 @@ sudo mysql -u username -p
  Note: sudo is optional unless you are using mysql version 5.7 or higher, and using the root user.
 
 ``` 
-mysql> CREATE DATABASE requests 
+mysql> CREATE DATABASE requests;
 ```
 
 ## Running Locally
@@ -98,7 +98,7 @@ II. create a virtual environment (this step is optional you can download the dep
 	source name/bin/activate
 ```
 
-III. navigate into this repository in your terminal and install dependecies:
+III. In terminal, navigate into this repository that you downloaded and install dependecies:
 ``` 
 pip install -r requirements.txt
 ```
@@ -116,7 +116,7 @@ python run.py
 now the application is running on http://localhost:5000
 
 ## Running Tests
-Make sure to go through [Setting Up Enviroment](#setting-up-environment) before continuing on this section
+Make sure to go through [Setting Up Enviroment](#setting-up-environment) and steps(I -III) from [Running Locally](#running-locally) before continuing on this section
 
 To run the test, from within the root directory:
 
